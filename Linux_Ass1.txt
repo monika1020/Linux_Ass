@@ -1,0 +1,198 @@
+Q1
+
+date
+Mon Sep  7 08:28:40 PDT 2020
+date +%Y
+2020
+
+date +%y
+20
+
+date +%T
+08:29:07
+
+date +%b
+Sep
+
+date +%B
+September
+
+cal
+
+cal -m1
+
+cal march
+
+cal 2022
+
+cal 2022 -m1
+
+whoami
+user
+
+ echo "welcome"
+=>welcome
+
+=================================================
+Q2
+mkdir a b c
+cd a
+a.txt b.txt c txt
+cd ..
+cd b
+a.txt b.txt c txt
+cd ..
+cd c
+a.txt b.txt c txt
+cd ..
+cp -r c a
+
+cd a
+ls
+=>a.txt  b.txt  c  c.txt
+
+mv b c
+cd c 
+ls
+=>a.txt  b  b.txt  c.txt
+
+alias monika="ls -lh"
+monika
+mv a cdac
+==============================================
+Q3
+$ cat >file1.txt
+"cdacians"
+
+~$ cat >file2.txt
+"message"
+~$ cat >file3.txt
+"message"
+~$ cat >file3.txt
+"message"
+~$  cat >file4.txt
+"message"
+~$ cat >file5.txt
+"message"
+
+~$ grep "s" file1.txt
+"cdacians"
+
+C
+cat file1.txt
+cat file2.txt
+cat file3.txt
+cat file4.txt
+cat file5.txt
+        
+D
+rm -r a
+rm -r b c
+=======================================
+Q4
+~$ vi file.txt
+~$ cat -n file.txt
+     1  cdac kharghar
+     2  welcome to mubai
+     3  cdac
+     4
+~$ cat -b file.txt
+     1  cdac kharghar
+     2  welcome to mubai
+     3  cdac
+
+~$ tac file.txt
+
+cdac
+welcome to mubai
+cdac kharghar
+
+~$ cat file1.txt file2.txt >file3.txt
+~$ cat file3.txt
+"cdacians"
+cat file1.txt
+cd ..
+"message"
+===============================================
+Q5
+~$ cat>f1.txt
+monika
+rupali
+shradhha
+harshda
+----
+~$ cat f1.txt
+monika
+rupali
+shradhha
+harshda
+--------
+~$ sort f1.txt
+harshda
+monika
+rupali
+shradhha
+ls -A
+
+ls -r
+ls -t ls-rt
+============================================
+Q1
+mkdir monika
+touch a.txt b.txt c.txt d.txt
+
+chmod +rw a.txt b.txt
+
+chmod +w c.txt
+
+cat>d.sh
+#/bin/sh
+
+chmod +x d.sh
+==================================================
+Q2
+~$ chmod +x monika
+===================
+Q3
+chmod -x monika
+chmod -r monika
+==========================
+Q4
+echo $(file.txt)
+=============================
+Q5
+echo>>"THIS IS MESSAGE" >> file.txt
+======================================
+Q1
+Q1
+mkdir a
+cd a
+mkdir b
+cd b
+mkdir c
+
+touch file.txt
+
+cp c a
+
+cp a b
+=============================
+Q2
+
+chmod +r c
+cp a c
+
+cd b
+mkdir data
+
+chmod +rw b
+
+cd b
+touch data.txt
+
+mv c copied_dir
+
+chmod +x copied_dir
+
+cd copied_dir
+ls

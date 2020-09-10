@@ -1,0 +1,125 @@
+Q2
+2. Write a menu based script to perform following string operations
+a) To find length of a string
+
+~$ vi file.txt
+str="Monika"
+len=${#str}
+echo "length $len"
+
+~$ chmod 777 file.txt
+~$ ./file.txt
+length 6
+---------------
+b)echo enter a string : 
+read str
+ l=`expr length $str` 
+echo Length of $str
+---------------------
+c)
+c) Copying string
+a='Monika'
+b="${a}"
+echo "${b}"
+-------------------
+d)
+d) Concatenation of strings
+a='Hello'
+b='Rupali'
+c="${a}${b}"
+echo "${c}"
+-----------------
+e) Compare two strings
+var1="Monika"
+var2="mon"
+
+if [ "$var1" = "$var2" ]; then
+   echo "true"
+else
+   echo "false"
+fi
+-------------------------
+
+f) Reversing a string
+echo "nixcraft" | rev
+
+input="$1"
+reverse=""
+ 
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do 
+	reverse="$reverse${input:$i:1}"
+done
+ 
+echo "$reverse"
+=========================================
+
+1. Write a script To check given year is leap or not.
+ echo "Enter number to check whether it is leap year or not"
+read year
+a=`expr $year % 4 | expr $year % 400 `
+if test $a -eq 0
+then
+   echo "$year is a leap Year"
+else
+   echo "$year is not a leap year"
+fi
+--------------------------------------
+2)
+--date -d "sep 8 2020" +%a
+-- DAYOFWEEK=$(date +"%u")
+echo "$DAYOFWEEK";
+if [ "$DAYOFWEEK" == 1 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 2 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 3 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 4 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 5 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 6 ]; then exit; else echo; fi
+if [ "$DAYOFWEEK" == 7 ]; then exit; else echo; fi
+---------------------------------------------------
+4. Write a program to check wahether given no.is even or odd
+echo "Enter Numbers"
+read a
+b=`expr $a % 2`
+if test $b -eq 0
+then
+        echo "$a Even Number"
+else
+        echo "$a Odd Number"
+fi
+--------------------------------------------
+6. Write a program to find sum and product of two no.s using 
+	a) let 
+	b)expr
+ echo "Enter two Numbers"
+read a
+read b
+c=`expr $a + $b`
+d=`expr $a \* $b`
+echo "sum  : $c"
+echo "Product : $d"
+----------------------------------------
+7. Write a script to generate Fibonacci series.
+echo "Enter n Numbers"
+read n
+a=0
+b=1
+i=0
+sum=0
+while [ $i -le $n ]
+do
+        sum=$((a + b))
+        echo $sum
+        a=$b
+        b=$sum
+        sum=0
+        i=$((i + 1))
+done
+------------------------------
+
+
+
+
+
+

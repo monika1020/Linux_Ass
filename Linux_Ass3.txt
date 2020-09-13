@@ -1,4 +1,35 @@
-﻿
+﻿2) 	The parent & child process concept
+--->	A child process is a process created by a parent process in operating system 
+	using a fork() system call. A child process is created as its parent process's copy 
+	and inherits most of its attributes. ... 
+	If a child process has no parent process, it was created directly by the kernel.
+
+
+3)	Understand orphan processes
+--->	Orphan processes are those processes that are still running even though 
+	their parent process has terminated or finished. A process can be orphaned 
+	intentionally or unintentionally. 
+	An intentionally orphaned process runs in the background without 
+	any manual support.
+
+4)	Understand zombie processes
+--->	A zombie process is a process whose execution is completed 
+	but it still has an entry in the process table. Zombie processes usually 
+	occur for child processes, 
+	as the parent process still needs to read its child's exit status.
+
+4) i]	How to kill the Zombie Process?
+--->	The zombie processes can be removed from the system by sending the 
+	SIGCHLD signal to the parent, using the kill command. If the zombie process 
+	is still not eliminated from the process table by the parent process, 
+	then the parent process is terminated if that is acceptable.
+
+5)	what is getpid() and how to use it..??
+--->	getpid() returns the process ID of the current process. 
+	(This is often used by routines that generate unique temporary filenames.) 
+	getppid() returns the process ID of the parent of the current process.
+
+==========================================================================================
 
 1)	Parent and child process 
 	Write a C/CPP program to create a child process. 
@@ -27,7 +58,37 @@ int main(){
 	}
 }
 
-=========================================================================================
+=====================================OR IN CPP====================================================
+vi parent.cpp
+==========
+#include<iostream>
+#include<sys.types.h>
+#include<unistd.h>
+
+using namespace std;
+
+int main(){
+
+pid_t pid;
+pid=fork();
+
+if (pid==0){
+cout<<"this is child process:"<<getpid();
+
+}
+else if (pid >0)
+{
+cout<<"this is parent process:"<<getpid();
+}
+else
+{
+cout<<"process is not created";
+}
+}
+-=============================
+gcc -o fork parent.cpp
+./parent
+==================================
 
 2) 	2.Scheduling functions 
 	Write a program in C/CPP to check the scheduling policy used by the process and its priority. 
@@ -59,6 +120,94 @@ int main(){
 		printf("Error...Something went wrong");
 	}
 }
+=================================================================
+Q4
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <queue>
+#include <ctime>
+
+using namespace std;
+
+struct pstruct
+{
+    string process;
+    double arrival_time;
+    double execution_time;
+};
+queue<pstruct> sch_queue;
+void FCFS()
+{
+    double currentime = 0;
+    double comp_time = 0;
+
+    double compeletion_time[100];
+    double turn_around_time[100];
+    double waiting_time[100];
+    int i = 0;
+    while (!sch_queue.empty())
+    {
+        struct pstruct q1 = sch_queue.front();
+        if (currentime < q1.arrival_time)
+        {
+
+            currentime = q1.arrival_time;
+        }
+
+        double comp_time = currentime + q1.execution_time;
+        currentime = comp_time;
+
+        compeletion_time[i] = comp_time;
+        turn_around_time[i] = comp_time - q1.arrival_time;
+        waiting_time[i] = turn_around_time[i] - q1.execution_time;
+
+        sch_queue.pop();
+        i++;
+    }
+
+    double sumturn = 0;
+    double sumwait = 0;
+    for (int j = 0; j < i; j++)
+    {
+
+        sumturn = sumturn + turn_around_time[j];
+        sumwait = sumwait + waiting_time[j];
+    }
+
+    double avg_turnaround = sumturn / i;
+    double avg_waiting_time = sumwait / i;
+    cout << "avg turn around time is : " << avg_turnaround << " avg waiting time is:  " << avg_waiting_time << endl;
+}
+
+int main()
+{
+
+    while (1)
+    {
+        struct pstruct p;
+        string process;
+        cout << "enter process name" << endl;
+        cin >> process;
+        if (process == "end")
+            break;
+        p.process = process;
+        double arrival_time;
+        cout << "enter arrival time name" << endl;
+        cin >> arrival_time;
+        p.arrival_time = arrival_time;
+        double execution_time;
+        cout << "enter burst time /execution time" << endl;
+        cin >> execution_time;
+        p.execution_time = execution_time;
+        sch_queue.push(p);
+    }
+
+    FCFS();
+
+    return 0;
+} 
+=======================================
 
 
 =====================================================================================================
